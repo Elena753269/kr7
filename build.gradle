@@ -1,7 +1,10 @@
 plugins {
     id 'java'
+    id 'jacoco'
 }
-
+jacoco {
+    toolVersion = "0.8.9"
+}
 repositories {
     mavenCentral()
 }
@@ -23,6 +26,7 @@ tasks.withType(JavaCompile) {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
 }
 
 tasks.withType(Test) {
